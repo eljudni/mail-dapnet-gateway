@@ -77,7 +77,7 @@ let smtpOptions = {
 
 const smtpServer = new SMTPServer(smtpOptions);
 smtpServer.on('error', error => {
-    log.error(err);
+    log.error(error);
 });
 
 smtpServer.listen(config.get('email.listen_port'), () => {
