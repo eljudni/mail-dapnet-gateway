@@ -1,0 +1,33 @@
+{
+  "name": "mail-dapnet-gateway",
+  "version": "1.0.0",
+  "description": "A gateway from email to dapnet",
+  "main": "index.js",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "config": "^3.0.1",
+    "events": "^3.0.0",
+    "mailparser": "^2.4.3",
+    "net": "^1.0.2",
+    "request": "^2.88.0",
+    "smtp-server": "^3.5.0",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eljudni/mail-dapnet-gateway.git"
+  },
+  "keywords": [
+    "DAPNET"
+  ],
+  "author": "Peter Kornherr DO5EMA <peter@kornherr.net>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/eljudni/mail-dapnet-gateway/issues"
+  },
+  "homepage": "https://github.com/eljudni/mail-dapnet-gateway#readme"
+}
