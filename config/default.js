@@ -21,7 +21,7 @@ module.exports = {
             'fool@invalid',
             'abuse@invalid'
         ],
-        listen_port: 1025,
-        pop3_listen_port: 1110
+        listen_port: 25,
+        pop3_listen_port: 110
     }
 };
