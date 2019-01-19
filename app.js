@@ -11,8 +11,6 @@ const   config      = require('config'),
 
 log.level(config.get('general.logLevel'));
 
-let key = '';
-
 let smtpOptions = {
     secure: false,
     name: 'dapnet gateway',
@@ -20,7 +18,7 @@ let smtpOptions = {
     authOptional: true,
     allowInsecureAuth: true,
     onAuth(auth,session,cb) {
-        key = auth.password;
+        session.key = auth.password;
         return cb(null, {user: auth.username});
     },
     onConnect(session,cb) {
@@ -57,18 +55,18 @@ let smtpOptions = {
                     cb(new Error("Sending address invalid."));
                 if (!to[1])
                     to[1] = config.get('dapnet.default_tx');
-                dapnet.send(to[0], session.user, m.subject + m.text, [to[1]], session.user, key)
+                dapnet.send([to[0]], session.user, m.subject?m.subject:"" + " " + m.text?m.text:"", [to[1]], session.user, session.key)
                 .then(() => {
                     cb();
                 })
                 .catch((err) => {
                     log.error(err);
-                    cb(new Error(err));
+                    cb(new Error(JSON.stringify(err)));
                 });
             })
             .catch(err => {
                 log.error(err);
-                cb(new Error(err));
+                cb(new Error(JSON.stringify(err)));
             });
         });
     },

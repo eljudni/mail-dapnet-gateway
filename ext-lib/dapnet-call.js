@@ -22,7 +22,7 @@ function send(destination,sender,message,tx,api_user,api_key) {
             return new Promise((res2,rej2) => {
                 let payload = {
                     text: sender + ": " + message,
-                    callSignNames: [destination],
+                    callSignNames: [call],
                     transmitterGroupNames: tx,
                     emergency: false
                 }
