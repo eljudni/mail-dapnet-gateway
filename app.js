@@ -42,14 +42,12 @@ let smtpOptions = {
     },
     onData(stream,session,cb) {
         let msg = [];
-        console.log(JSON.stringify(session));
         stream.on('data', chunk => {
             msg.push(chunk);
         });
         stream.on('end', () => {
             mailparser(Buffer.concat(msg).toString())
             .then(m => {
-                log.debug("using message", m);
                 let to = m.headers.get('to').value[0].address.split('@');
                 if (!to[0])
                     cb(new Error("Sending address invalid."));
@@ -69,9 +67,6 @@ let smtpOptions = {
                 cb(new Error(JSON.stringify(err)));
             });
         });
-    },
-    onClose(session) {
-        console.log("sessionclosed",session);
     }
 };
 
